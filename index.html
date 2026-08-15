@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slides Catalog</title>
+  <style>
+    :root {
+      --bg-grad-a: #0f172a;
+      --bg-grad-b: #020617;
+      --card-bg: #0b1220e0;
+      --card-hover: #0b1220ff;
+      --title: #f8fafc;
+      --text: #e2e8f0;
+      --accent: #38bdf8;
+      --font-heading: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, #0ea5e933 0%, transparent 35%),
+        radial-gradient(circle at 80% 10%, #38bdf833 0%, transparent 35%),
+        linear-gradient(135deg, var(--bg-grad-a), var(--bg-grad-b));
+      min-height: 100vh;
+      padding: 3em 2em;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3em;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8em;
+      font-weight: 600;
+      color: var(--title);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5em;
+      text-transform: none;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      color: #cbd5e1;
+      font-weight: 300;
+    }
+
+    .slides-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2em;
+      margin-top: 2em;
+    }
+
+    .slide-card {
+      background: var(--card-bg);
+      border: 1px solid #1e293b;
+      border-radius: 20px;
+      padding: 2em;
+      backdrop-filter: blur(4px);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 180px;
+      cursor: pointer;
+    }
+
+    .slide-card:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      box-shadow: 0 20px 50px #38bdf833;
+      transform: translateY(-4px);
+    }
+
+    .slide-card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6em;
+      font-weight: 600;
+      color: var(--title);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5em;
+      text-transform: none;
+    }
+
+    .slide-card p {
+      font-size: 0.95em;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
+
+    .slide-badge {
+      display: inline-block;
+      background: #1e293b;
+      color: var(--accent);
+      padding: 0.3em 0.8em;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin-top: 1em;
+      width: fit-content;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4em;
+      padding-top: 2em;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+      font-size: 0.9em;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 3em 2em;
+      color: #64748b;
+    }
+
+    .empty-state h2 {
+      color: #cbd5e1;
+      margin-bottom: 1em;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 2em 1em;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .slides-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5em;
+      }
+
+      .slide-card {
+        padding: 1.5em;
+        min-height: 150px;
+      }
+
+      .slide-card h2 {
+        font-size: 1.3em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Slides Catalog</h1>
+      <p class="subtitle">A collection of presentations powered by reveal.js</p>
+    </header>
+
+    <div class="slides-grid">
+      <a href="aws-summit-2026/index.html" class="slide-card">
+        <h2>AWS Summit 2026</h2>
+        <p>Explore the latest AWS innovations and AI-powered development lifecycle with insights on Kiro, Kubernetes sandbox, and more.</p>
+        <span class="slide-badge">View Presentation →</span>
+      </a>
+    </div>
+
+    <footer>
+      <p>Each slide is a self-contained presentation with its own assets. More slides coming soon.</p>
+    </footer>
+  </div>
+</body>
+</html>
