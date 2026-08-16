@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Idea to Launch</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css" />
+  <style>
+    :root {
+      --bg-a: #090611;
+      --bg-b: #130d22;
+      --bg-c: #1b1232;
+      --panel: rgba(21, 16, 35, 0.78);
+      --panel-border: rgba(168, 85, 247, 0.32);
+      --title: #f5f3ff;
+      --text: #e9d5ff;
+      --muted: #ddd6fe;
+      --accent: #a78bfa;
+      --accent-2: #c084fc;
+      --accent-3: #67e8f9;
+      --glow: rgba(168, 85, 247, 0.28);
+      --glow-2: rgba(103, 232, 249, 0.2);
+      --shadow: rgba(9, 6, 17, 0.88);
+    }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at 15% 18%, rgba(168, 85, 247, 0.22), transparent 24%),
+        radial-gradient(circle at 82% 12%, rgba(103, 232, 249, 0.14), transparent 26%),
+        radial-gradient(circle at 65% 72%, rgba(192, 132, 252, 0.16), transparent 28%),
+        linear-gradient(135deg, var(--bg-a), var(--bg-b) 42%, var(--bg-c));
+      font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196, 181, 253, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196, 181, 253, 0.045) 1px, transparent 1px);
+      background-size: 26px 26px;
+      mask-image: radial-gradient(circle at center, black 58%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .reveal {
+      font-size: 30px;
+      color: var(--text);
+      background: transparent;
+    }
+
+    .reveal .slides {
+      text-align: center;
+    }
+
+    .reveal .slides section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2.5rem;
+      box-sizing: border-box;
+    }
+
+    .slide-card {
+      width: min(1120px, 90vw);
+      padding: 2.6rem 3rem 2.3rem;
+      border: 1px solid var(--panel-border);
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(24, 18, 40, 0.82), rgba(18, 12, 31, 0.7));
+      backdrop-filter: blur(10px);
+      box-shadow:
+        0 0 0 1px rgba(168, 85, 247, 0.08),
+        0 32px 80px var(--shadow),
+        0 0 32px rgba(168, 85, 247, 0.14),
+        inset 0 0 32px rgba(103, 232, 249, 0.05);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .slide-card::before {
+      content: "";
+      position: absolute;
+      left: -12%;
+      top: -18%;
+      width: 290px;
+      height: 290px;
+      background: radial-gradient(circle, var(--glow), transparent 62%);
+      pointer-events: none;
+    }
+
+    .reveal h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: clamp(1.6em, 2.5vw, 2.9em);
+      font-weight: 600;
+      line-height: 1.24;
+      letter-spacing: -0.04em;
+      color: var(--title);
+      text-transform: none;
+      text-shadow:
+        0 0 24px rgba(192, 132, 252, 0.18),
+        0 0 42px rgba(103, 232, 249, 0.1);
+      max-width: 900px;
+    }
+
+    .reveal .controls,
+    .reveal .progress {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .reveal {
+        font-size: 22px;
+      }
+
+      .slide-card {
+        padding: 1.8rem 1.3rem;
+        border-radius: 20px;
+      }
+
+      .slide-card::before {
+        width: 180px;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <div class="slide-card">
+          <h2>Ever thought about building something of your own.</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2>Turning an idea into a product has two major costs: development and deployment.</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2>Too much development time kills side projects.</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2>AI has dramatically lowered the cost of development.</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2>So, what about deployment?</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2>The infrastructure for deployment has been here all along.</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2>Let’s put it all together and build a working MVP.</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
+          <h2><a href="https://github.com/ripienaar/free-for-dev" target="_blank" rel="noopener noreferrer" style="color: #c4b5fd; text-decoration: underline;">https://github.com/ripienaar/free-for-dev</a></h2>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      controls: false,
+      progress: false,
+      slideNumber: false,
+      transition: 'fade',
+      center: true,
+      width: 1280,
+      height: 720,
+      margin: 0.11
+    });
+  </script>
+</body>
+</html>
