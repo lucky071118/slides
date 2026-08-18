@@ -150,6 +150,105 @@
       <section>
         <div class="slide-card">
           <h2>Turning an idea into a product has two major costs: development and deployment.</h2>
+          <figure style="margin-top: 2rem; width: 100%; max-width: 900px;">
+            <svg viewBox="0 0 1000 400" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto;">
+              <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <polygon points="0 0, 10 3, 0 6" fill="#67e8f9" />
+                </marker>
+              </defs>
+              
+              <!-- Laptop -->
+              <!-- Laptop bottom base -->
+              <rect x="15" y="210" width="180" height="12" fill="#a78bfa" rx="2" />
+              
+              <!-- Laptop screen hinge (two small cylinders) -->
+              <rect x="35" y="205" width="8" height="8" fill="#8b7ba8" rx="2" />
+              <rect x="157" y="205" width="8" height="8" fill="#8b7ba8" rx="2" />
+              
+              <!-- Laptop screen bezel/frame -->
+              <rect x="20" y="60" width="170" height="145" fill="none" stroke="#a78bfa" stroke-width="3" rx="6" />
+              
+              <!-- Laptop screen (inner) -->
+              <rect x="28" y="72" width="154" height="121" fill="#1a1426" stroke="#67e8f9" stroke-width="2" rx="3" />
+              
+              <!-- Screen shine/gloss effect -->
+              <ellipse cx="70" cy="95" rx="30" ry="20" fill="#67e8f9" opacity="0.15" />
+              
+              <!-- Keyboard keys hint -->
+              <line x1="30" y1="195" x2="180" y2="195" stroke="#8b7ba8" stroke-width="1" opacity="0.6" />
+              <circle cx="50" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              <circle cx="70" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              <circle cx="90" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              <circle cx="110" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              <circle cx="130" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              <circle cx="150" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              <circle cx="170" cy="202" r="2" fill="#8b7ba8" opacity="0.5" />
+              
+              <!-- Laptop trackpad -->
+              <rect x="60" y="195" width="60" height="8" fill="none" stroke="#8b7ba8" stroke-width="1" opacity="0.6" rx="1" />
+              
+              <!-- Arrow to Internet (hidden initially) -->
+              <g id="arrow-group">
+                <line x1="220" y1="140" x2="490" y2="140" stroke="#67e8f9" stroke-width="2" />
+                <polygon points="490,140 480,135 483,140 480,145" fill="#67e8f9" />
+              </g>
+              
+              <!-- Internet (Center - hidden initially) -->
+              <g id="internet-group">
+                <circle cx="560" cy="140" r="50" fill="none" stroke="#a78bfa" stroke-width="2" />
+                <text x="560" y="147" font-size="16" fill="#f5f3ff" text-anchor="middle" font-weight="600">Internet</text>
+              </g>
+              
+              <!-- User Circles (hidden initially) -->
+              <g id="users-group">
+                <!-- User 1 (top-left) -->
+                <circle cx="440" cy="60" r="30" fill="none" stroke="#67e8f9" stroke-width="2" />
+                <text x="440" y="67" font-size="12" fill="#f5f3ff" text-anchor="middle" font-weight="600">User</text>
+                <line x1="520" y1="115" x2="470" y2="85" stroke="#67e8f9" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                
+                <!-- User 2 (top-right) -->
+                <circle cx="680" cy="60" r="30" fill="none" stroke="#67e8f9" stroke-width="2" />
+                <text x="680" y="67" font-size="12" fill="#f5f3ff" text-anchor="middle" font-weight="600">User</text>
+                <line x1="600" y1="115" x2="660" y2="85" stroke="#67e8f9" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                
+                <!-- User 3 (right) -->
+                <circle cx="710" cy="140" r="30" fill="none" stroke="#67e8f9" stroke-width="2" />
+                <text x="710" y="147" font-size="12" fill="#f5f3ff" text-anchor="middle" font-weight="600">User</text>
+                <line x1="610" y1="140" x2="680" y2="140" stroke="#67e8f9" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                
+                <!-- User 4 (bottom-right) -->
+                <circle cx="680" cy="220" r="30" fill="none" stroke="#67e8f9" stroke-width="2" />
+                <text x="680" y="227" font-size="12" fill="#f5f3ff" text-anchor="middle" font-weight="600">User</text>
+                <line x1="600" y1="165" x2="660" y2="195" stroke="#67e8f9" stroke-width="1.5" marker-end="url(#arrowhead)" />
+                
+                <!-- User 5 (bottom-left) -->
+                <circle cx="440" cy="220" r="30" fill="none" stroke="#67e8f9" stroke-width="2" />
+                <text x="440" y="227" font-size="12" fill="#f5f3ff" text-anchor="middle" font-weight="600">User</text>
+                <line x1="520" y1="165" x2="470" y2="195" stroke="#67e8f9" stroke-width="1.5" marker-end="url(#arrowhead)" />
+              </g>
+              
+              <!-- Software Product text (appears in frame 2) -->
+              <g id="software-content">
+                <!-- Bar chart representation -->
+                <!-- Title -->
+                <text x="105" y="100" font-size="12" fill="#a78bfa" text-anchor="middle" font-weight="600" opacity="0.8">Dashboard</text>
+                
+                <!-- Bars with different heights -->
+                <!-- Bar 1 -->
+                <rect x="75" y="125" width="8" height="35" fill="#67e8f9" opacity="0.7" />
+                <!-- Bar 2 -->
+                <rect x="88" y="115" width="8" height="45" fill="#c084fc" opacity="0.7" />
+                <!-- Bar 3 -->
+                <rect x="101" y="120" width="8" height="40" fill="#a78bfa" opacity="0.7" />
+                <!-- Bar 4 -->
+                <rect x="114" y="130" width="8" height="30" fill="#67e8f9" opacity="0.7" />
+                
+                <!-- X-axis line -->
+                <line x1="72" y1="162" x2="125" y2="162" stroke="#8b7ba8" stroke-width="1" opacity="0.5" />
+              </g>
+            </svg>
+          </figure>
         </div>
       </section>
 
@@ -185,6 +284,12 @@
 
       <section>
         <div class="slide-card">
+          <h2>Sharing your website with the world</h2>
+        </div>
+      </section>
+
+      <section>
+        <div class="slide-card">
           <h2><a href="https://github.com/ripienaar/free-for-dev" target="_blank" rel="noopener noreferrer" style="color: #c4b5fd; text-decoration: underline;">https://github.com/ripienaar/free-for-dev</a></h2>
         </div>
       </section>
@@ -192,6 +297,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script>
     Reveal.initialize({
       hash: true,
@@ -203,6 +309,53 @@
       width: 1280,
       height: 720,
       margin: 0.11
+    });
+
+    // GSAP animations for the diagram slide
+    Reveal.on('slidechanged', (event) => {
+      if (event.indexh === 1) {
+        // Kill any existing animations
+        gsap.killTweensOf('svg *');
+        
+        // Hide all elements that appear in later frames
+        gsap.set(['#arrow-group', '#internet-group', '#users-group', '#software-content'], { 
+          opacity: 0 
+        });
+        
+        // Create a timeline with repeat
+        const tl = gsap.timeline({ 
+          repeat: -1,
+          repeatDelay: 0
+        });
+        
+        // Frame 1: Laptop only (2.5 seconds)
+        tl.to('svg', { duration: 2.5 }, 0);
+        
+        // Frame 2: Show software dashboard content (2.5 seconds) - NO arrow yet
+        tl.to('#software-content', {
+          duration: 0.5,
+          opacity: 1
+        }, 2.5);
+        tl.to('svg', { duration: 2.5 }, 2.5);
+        
+        // Frame 3: Show arrow and internet circle (2.5 seconds)
+        tl.to('#arrow-group', {
+          duration: 0.3,
+          opacity: 1
+        }, 5);
+        tl.to('#internet-group', {
+          duration: 0.8,
+          opacity: 1
+        }, 5.3);
+        tl.to('svg', { duration: 2.5 }, 5);
+        
+        // Frame 4: Show users (2.5 seconds) - arrow and internet stay visible
+        tl.to('#users-group', {
+          duration: 0.6,
+          opacity: 1
+        }, 7.5);
+        tl.to('svg', { duration: 2.5 }, 7.5);
+      }
     });
   </script>
 </body>
