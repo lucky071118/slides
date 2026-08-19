@@ -322,33 +322,33 @@
           repeatDelay: 0
         });
         
-        // Frame 1: Laptop only (2.5 seconds)
-        tl.to('svg', { duration: 2.5 }, 0);
+        // Frame 1: Laptop only (1 second)
+        tl.to('svg', { duration: 1 }, 0);
         
-        // Frame 2: Show software dashboard content (2.5 seconds) - NO arrow yet
+        // Frame 2: Show software dashboard content (1 second) - NO arrow yet
         tl.to('#software-content', {
           duration: 0.5,
           opacity: 1
-        }, 2.5);
-        tl.to('svg', { duration: 2.5 }, 2.5);
+        }, 1);
+        tl.to('svg', { duration: 1 }, 1);
         
-        // Frame 3: Show arrow and internet circle (2.5 seconds)
+        // Frame 3: Show arrow and internet circle (1 second)
         tl.to('#arrow-group', {
           duration: 0.3,
           opacity: 1
-        }, 5);
+        }, 2);
         tl.to('#internet-group', {
           duration: 0.8,
           opacity: 1
-        }, 5.3);
-        tl.to('svg', { duration: 2.5 }, 5);
+        }, 2.3);
+        tl.to('svg', { duration: 1 }, 2);
         
-        // Frame 4: Show users (2.5 seconds) - arrow and internet stay visible
+        // Frame 4: Show users (1 second) - arrow and internet stay visible
         tl.to('#users-group', {
           duration: 0.6,
           opacity: 1
-        }, 7.5);
-        tl.to('svg', { duration: 2.5 }, 7.5);
+        }, 3);
+        tl.to('svg', { duration: 1 }, 3);
       }
     });
   </script>
