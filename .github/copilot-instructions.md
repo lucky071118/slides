@@ -1,5 +1,5 @@
 # Git
-When the feature/fix is done, create a descriptive branch, commit it with a descriptive message and use gh to create a pull request.
+When the feature/fix is done, create a descriptive branch, commit it with a descriptive message push branch and and use gh with non-interactive mode to create a pull request.
 
 # Output Rules
 - Code only. No explanations unless I explicitly ask.
