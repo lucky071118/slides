@@ -445,6 +445,12 @@
 
     .playback-packet-streaming { animation-name: playback-bucket; }
     .playback-packet-metadata { color: var(--mint); animation-name: playback-database; }
+    .final-flow .playback-route-a .playback-packet-video:nth-child(3) {
+      color: #d08cff;
+      animation: playback-drm 2.8s linear infinite;
+    }
+
+    .final-flow .video-drm-a { color: #d08cff; }
 
     .playback-packet-poster,
     .playback-packet-subtitle,
@@ -645,6 +651,11 @@
       100% { left: 100%; top: 50%; opacity: 0; }
     }
 
+    @keyframes playback-drm {
+      0% { left: 15%; top: 20%; opacity: 1; }
+      100% { left: 100%; top: 50%; opacity: 1; }
+    }
+
     .player-a { top: 6%; }
     .player-b { top: 55%; }
 
@@ -708,6 +719,8 @@
     }
 
     .video-b::after { content: "DRM VIDEO"; }
+    .video-original::after { content: "VIDEO"; }
+    .video-drm::after { content: "DRM VIDEO"; }
 
     .asset {
       position: absolute;
@@ -753,6 +766,16 @@
     .video-b { color: var(--coral); }
     .video-a { animation: travel-a 6s ease-in-out infinite; }
     .video-b { animation: travel-b 6s ease-in-out infinite 1.1s; }
+    .video-drm-a {
+      left: 15%;
+      top: 50%;
+      animation: travel-drm-a 6s ease-in-out infinite 3s both;
+    }
+    .video-drm-b {
+      left: 15%;
+      top: 50%;
+      animation: travel-drm-b 6s ease-in-out infinite 4.1s both;
+    }
 
     @keyframes travel-a {
       0%, 8% { left: 3%; top: 50%; opacity: 0; }
@@ -764,6 +787,22 @@
 
     @keyframes travel-b {
       0%, 8% { left: 3%; top: 50%; opacity: 0; }
+      15% { top: 50%; opacity: 1; }
+      62% { left: 96%; top: 50%; opacity: 1; }
+      76% { left: 132%; top: var(--storage-top); opacity: 1; }
+      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    }
+
+    @keyframes travel-drm-a {
+      0%, 8% { left: 15%; top: 50%; opacity: 0; }
+      15% { top: 50%; opacity: 1; }
+      62% { left: 96%; top: 50%; opacity: 1; }
+      76% { left: 132%; top: var(--storage-top); opacity: 1; }
+      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    }
+
+    @keyframes travel-drm-b {
+      0%, 8% { left: 15%; top: 50%; opacity: 0; }
       15% { top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
@@ -999,7 +1038,7 @@
 
         </div>
       </section>
-      <section class="updated-flow">
+      <section class="updated-flow final-flow">
         <div class="canvas">
           <h1>Independent Pipelines, Synced Data</h1>
 
@@ -1014,6 +1053,7 @@
               <div class="asset asset-a asset-metadata">Drama metadata</div>
               <div class="asset asset-a asset-poster">Poster</div>
               <div class="video video-a"></div>
+              <div class="video video-a video-drm video-drm-a"></div>
             </div>
             <div class="storage-bank storage-bank-a" aria-label="LineTV Pipeline storage: database and bucket">
               <span class="storage-label"></span>
@@ -1025,6 +1065,7 @@
             <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
               <div class="playback-packet playback-packet-video">Video</div>
+              <div class="playback-packet playback-packet-video">DRM VIDEO</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
               <div class="playback-packet playback-packet-metadata">Metadata</div>
@@ -1042,7 +1083,8 @@
               <div class="asset asset-b asset-subtitle">Subtitle</div>
               <div class="asset asset-b asset-metadata">Drama metadata</div>
               <div class="asset asset-b asset-poster">Poster</div>
-              <div class="video video-b"></div>
+              <div class="video video-b video-original"></div>
+              <div class="video video-b video-original video-drm video-drm-b"></div>
             </div>
             <div class="storage-bank storage-bank-b" aria-label="KKTV Pipeline storage: database and bucket">
               <span class="storage-label"></span>
