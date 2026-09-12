@@ -732,6 +732,44 @@
     .video-original::after { content: "VIDEO"; }
     .video-drm::after { content: "DRM VIDEO"; }
 
+    .video-b:not(.video-original)::before,
+    .video-b:not(.video-original)::after {
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-b:not(.video-original)::before {
+      content: "VIDEO";
+      display: flex;
+      animation: kktv-video-label 6s ease-in-out infinite 1.1s;
+    }
+
+    .video-b:not(.video-original)::after {
+      display: flex;
+      animation: kktv-drm-label 6s ease-in-out infinite 1.1s;
+    }
+
+    .video-drm-a::before,
+    .video-drm-a::after {
+      position: absolute;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-drm-a::before {
+      content: "VIDEO";
+      display: flex;
+      animation: kktv-video-label 6s ease-in-out infinite 3s;
+    }
+
+    .video-drm-a::after {
+      display: flex;
+      animation: kktv-drm-label 6s ease-in-out infinite 3s;
+    }
+
     .asset {
       position: absolute;
       z-index: 1;
@@ -833,6 +871,17 @@
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    }
+
+    @keyframes kktv-video-label {
+      0%, 8% { opacity: 0; }
+      10%, 18% { opacity: 1; }
+      22%, 100% { opacity: 0; }
+    }
+
+    @keyframes kktv-drm-label {
+      0%, 16% { opacity: 0; }
+      20%, 100% { opacity: 1; }
     }
 
     @media (max-width: 900px) {
