@@ -84,11 +84,13 @@
       right: 8%;
       top: 34%;
       height: 50%;
+      --pipeline-left: 29%;
+      --origin-width: 19%;
     }
 
     .road {
       position: absolute;
-      left: 22%;
+      left: var(--pipeline-left);
       right: 45%;
       height: 22%;
       box-sizing: border-box;
@@ -96,15 +98,6 @@
       border-radius: 0;
       background: rgba(16, 37, 34, 0.76);
       box-shadow: inset 0 0 0 1px rgba(98, 230, 192, 0.03);
-    }
-
-    .road::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 50%;
-      border-top: 1px dashed rgba(157, 177, 174, 0.45);
     }
 
     .road-a { top: 6%; border-top-color: rgba(255, 139, 107, 0.75); border-bottom-color: rgba(255, 139, 107, 0.2); }
@@ -239,7 +232,7 @@
       left: 0;
       z-index: 3;
       display: flex;
-      width: 19%;
+      width: var(--origin-width);
       height: 22%;
       align-items: center;
       gap: 0.35em;
@@ -795,48 +788,48 @@
     }
 
     @keyframes travel-a {
-      0%, 8% { left: 3%; top: 50%; opacity: 0; }
-      15% { top: 50%; opacity: 1; }
+      0%, 8% { left: -38%; top: 50%; opacity: 0; }
+      15% { left: 8%; top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
     }
 
     @keyframes travel-b {
-      0%, 8% { left: 3%; top: 50%; opacity: 0; }
-      15% { top: 50%; opacity: 1; }
+      0%, 8% { left: -38%; top: 50%; opacity: 0; }
+      15% { left: 8%; top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
     }
 
     @keyframes travel-drm-a {
-      0%, 8% { left: 15%; top: 50%; opacity: 0; }
-      15% { top: 50%; opacity: 1; }
+      0%, 8% { left: -38%; top: 50%; opacity: 0; }
+      15% { left: 8%; top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
     }
 
     @keyframes travel-drm-b {
-      0%, 8% { left: 15%; top: 50%; opacity: 0; }
-      15% { top: 50%; opacity: 1; }
+      0%, 8% { left: -38%; top: 50%; opacity: 0; }
+      15% { left: 8%; top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
     }
 
     @keyframes feed-a {
-      0%, 8% { left: 3%; top: 50%; opacity: 0; }
-      15% { left: 10%; top: 50%; opacity: 1; }
+      0%, 8% { left: -38%; top: 50%; opacity: 0; }
+      15% { left: 8%; top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
     }
 
     @keyframes feed-b {
-      0%, 8% { left: 3%; top: 50%; opacity: 0; }
-      15% { left: 10%; top: 50%; opacity: 1; }
+      0%, 8% { left: -38%; top: 50%; opacity: 0; }
+      15% { left: 8%; top: 50%; opacity: 1; }
       62% { left: 96%; top: 50%; opacity: 1; }
       76% { left: 132%; top: var(--storage-top); opacity: 1; }
       92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
