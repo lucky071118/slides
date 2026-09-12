@@ -91,7 +91,7 @@
     .road {
       position: absolute;
       left: var(--pipeline-left);
-      right: 45%;
+      right: 53%;
       height: 22%;
       box-sizing: border-box;
       border: 1px solid var(--line);
@@ -119,7 +119,7 @@
 
     .storage-bank {
       position: absolute;
-      left: 57%;
+      left: 49%;
       z-index: 3;
       display: flex;
       width: 15%;
@@ -376,7 +376,7 @@
     .player {
       position: absolute;
       right: 0;
-      z-index: 3;
+      z-index: 5;
       display: flex;
       width: 13%;
       height: 28%;
@@ -385,7 +385,7 @@
       box-sizing: border-box;
       border: 1px solid var(--gold);
       border-radius: 0.3em;
-      background: rgba(255, 209, 102, 0.1);
+      background: #0b1917;
       color: var(--gold);
       font-size: var(--label-size);
       font-weight: 700;
@@ -395,8 +395,8 @@
 
     .playback-route {
       position: absolute;
-      left: 72%;
-      width: 19%;
+      left: 64%;
+      width: 23%;
       height: 38%;
       box-sizing: border-box;
       overflow: hidden;
@@ -434,36 +434,19 @@
       text-transform: uppercase;
       transform: translateY(-50%);
       animation: playback 2.8s linear infinite;
+      box-shadow: 0 0 12px currentColor;
     }
 
-    .playback-packet-streaming { animation-name: playback-bucket; }
-    .playback-packet-metadata { color: var(--mint); animation-name: playback-database; }
-    .final-flow .playback-route-a .playback-packet-video:nth-child(3) {
-      color: #d08cff;
-      animation: playback-drm 2.8s linear infinite;
-    }
-
-    .final-flow .playback-route-a .playback-packet:nth-child(3),
-    .final-flow .playback-route-a .playback-packet:nth-child(5) {
-      animation-name: playback-staggered;
-      animation-duration: 8.4s;
-    }
-
-    .final-flow .playback-route-a .playback-packet:nth-child(3) { animation-delay: 0s; }
-    .final-flow .playback-route-a .playback-packet:nth-child(5) { animation-delay: 4.2s; }
-
-    .final-flow .video-drm-a { color: #d08cff; }
-
+    .playback-packet-metadata { color: var(--mint); }
     .playback-packet-poster,
-    .playback-packet-subtitle,
-    .playback-packet-streaming { color: var(--coral); animation-name: playback-bucket; }
+    .playback-packet-subtitle { color: var(--coral); animation-name: playback-bucket; }
     .playback-packet-video { color: var(--coral); animation-name: playback-bucket; }
 
     .playback-packet:nth-child(2) { animation-delay: 1.4s; }
 
     .metadata-transfer {
       position: absolute;
-      left: 64%;
+      left: 56.5%;
       top: 25%;
       z-index: 2;
       width: 1px;
@@ -547,7 +530,7 @@
     }
 
     .bad-mark-sync {
-      left: 71%;
+      left: 63%;
       top: 21%;
       width: 8%;
       height: 18%;
@@ -555,10 +538,10 @@
 
     .cross-playback-route {
       position: absolute;
-      left: 76%;
+      left: 68%;
       top: 18%;
-      z-index: 4;
-      width: 14%;
+      z-index: 2;
+      width: 19%;
       height: 58%;
       box-sizing: border-box;
       color: var(--coral);
@@ -589,6 +572,7 @@
       text-transform: uppercase;
       transform: translateY(-50%);
       animation: cross-playback 4.2s linear infinite;
+      box-shadow: 0 0 12px currentColor;
     }
 
     .cross-playback-packet:nth-child(3) { animation-delay: 1.4s; }
@@ -636,7 +620,6 @@
     .playback-route-a .playback-packet-metadata { animation-name: playback-database-bottom; }
     .playback-route-a .playback-packet-poster,
     .playback-route-a .playback-packet-subtitle,
-    .playback-route-a .playback-packet-streaming,
     .playback-route-a .playback-packet-video { animation-name: playback-bucket-top; }
 
     @keyframes playback-database-bottom {
@@ -714,67 +697,86 @@
       align-items: center;
       justify-content: center;
       transform: translate(-50%, -50%);
-      box-shadow: 0 0 18px currentColor;
+      box-shadow: 0 0 12px currentColor;
     }
 
-    .video::before {
-      display: none;
-    }
-
+    .video::before,
     .video::after {
-      content: "VIDEO";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1em;
       letter-spacing: 0.08em;
       color: currentColor;
     }
 
-    .video-b::after { content: "DRM VIDEO"; }
-    .video-original::after { content: "VIDEO"; }
-    .video-drm::after { content: "DRM VIDEO"; }
-
-    .video-b:not(.video-original)::before,
-    .video-b:not(.video-original)::after {
-      position: absolute;
-      inset: 0;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .video-b:not(.video-original)::before {
+    .video::before {
       content: "VIDEO";
-      display: flex;
-      animation: kktv-video-label 6s ease-in-out infinite 1.1s;
     }
 
-    .video-b:not(.video-original)::after {
-      display: flex;
-      animation: kktv-drm-label 6s ease-in-out infinite 1.1s;
+    .video::after {
+      content: "";
+      opacity: 0;
     }
 
-    .video-drm-a::before,
-    .video-drm-a::after {
-      position: absolute;
-      inset: 0;
-      align-items: center;
-      justify-content: center;
+    @keyframes video-to-drm-label-before {
+      0%, 7% { opacity: 1; }
+      9%, 100% { opacity: 0; }
     }
 
-    .video-drm-a::before {
-      content: "VIDEO";
-      display: flex;
-      animation: kktv-video-label 6s ease-in-out infinite 3s;
+    @keyframes video-to-drm-label-after {
+      0%, 7% { opacity: 0; }
+      9%, 100% { opacity: 1; }
     }
 
-    .video-drm-a::after {
-      display: flex;
-      animation: kktv-drm-label 6s ease-in-out infinite 3s;
+    @keyframes video-to-drm-label-final-before {
+      0%, 5.5% { opacity: 1; }
+      7.5%, 100% { opacity: 0; }
+    }
+
+    @keyframes video-to-drm-label-final-after {
+      0%, 5.5% { opacity: 0; }
+      7.5%, 100% { opacity: 1; }
+    }
+
+    .road-b .video::before {
+      animation: video-to-drm-label-before 10s linear infinite -2.5s;
+    }
+    .road-b .video::after {
+      content: "DRM VIDEO";
+      animation: video-to-drm-label-after 10s linear infinite -2.5s;
+    }
+
+    .final-flow .road-b .video:not(.video-drm)::before {
+      animation: video-to-drm-label-final-before 12.5s linear infinite -5s;
+    }
+    .final-flow .road-b .video:not(.video-drm)::after {
+      content: "DRM VIDEO";
+      animation: video-to-drm-label-final-after 12.5s linear infinite -5s;
+    }
+    .final-flow .road-b .video.video-drm::before {
+      animation: video-to-drm-label-final-before 12.5s linear infinite -2.5s;
+    }
+    .final-flow .road-b .video.video-drm::after {
+      content: "DRM VIDEO";
+      animation: video-to-drm-label-final-after 12.5s linear infinite -2.5s;
+    }
+
+    .final-flow .road-a .video.video-drm::before {
+      animation: video-to-drm-label-final-before 12.5s linear infinite -2.5s;
+    }
+    .final-flow .road-a .video.video-drm::after {
+      content: "DRM VIDEO";
+      animation: video-to-drm-label-final-after 12.5s linear infinite -2.5s;
     }
 
     .asset {
       position: absolute;
       z-index: 1;
       top: 50%;
-      --storage-top: 100%;
+      --storage-top: 15%;
       width: calc(var(--material-width) / 0.4);
       height: calc(var(--material-height) / 0.4);
       box-sizing: border-box;
@@ -789,99 +791,171 @@
       text-align: center;
       text-transform: uppercase;
       transform: translate(-50%, -50%);
+      box-shadow: 0 0 12px currentColor;
     }
 
-    .asset-a { animation: feed-a 6s ease-in-out infinite; }
-    .asset-b { animation: feed-b 6s ease-in-out infinite 1.1s; }
     .asset-subtitle { color: var(--coral); }
     .asset-metadata { color: var(--mint); }
     .asset-poster { color: var(--coral); }
-    .asset-metadata { --storage-top: 10%; }
+    .video-a,
+    .video-b { color: var(--coral); }
+    .final-flow .video-drm-a { color: #d08cff; }
 
     .road-a .asset-subtitle,
     .road-a .asset-poster,
-    .road-a .video { --storage-top: 10%; }
-    .road-a .asset-metadata { --storage-top: 75%; }
+    .road-a .video { --storage-top: 15%; }
+    .road-a .asset-metadata { --storage-top: 85%; }
 
-    .road-a .asset-metadata { animation-delay: 0.45s; }
-    .road-a .asset-poster { animation-delay: 0.9s; }
-    .road-a .asset-subtitle { animation-delay: 1.25s; }
-    .road-b .asset-metadata { animation-delay: 1.55s; }
-    .road-b .asset-poster { animation-delay: 2s; }
-    .road-b .asset-subtitle { animation-delay: 2.35s; }
+    .road-b .asset-subtitle,
+    .road-b .asset-poster,
+    .road-b .video { --storage-top: 85%; }
+    .road-b .asset-metadata { --storage-top: 15%; }
 
-    .video-a,
-    .video-b { color: var(--coral); }
-    .video-a { animation: travel-a 6s ease-in-out infinite; }
-    .video-b { animation: travel-b 6s ease-in-out infinite 1.1s; }
-    .video-drm-a {
-      left: 15%;
-      top: 50%;
-      animation: travel-drm-a 6s ease-in-out infinite 3s both;
-    }
-    .video-drm-b {
-      left: 15%;
-      top: 50%;
-      animation: travel-drm-b 6s ease-in-out infinite 4.1s both;
+    @keyframes road-flow {
+      0% { left: -40%; top: 50%; opacity: 0; }
+      2% { left: -31%; top: 50%; opacity: 1; }
+      33.33% { left: 110%; top: 50%; opacity: 1; }
+      39.58% { left: 138%; top: var(--storage-top); opacity: 1; }
+      41.67% { left: 148%; top: var(--storage-top); opacity: 0; }
+      41.68%, 100% { left: 148%; top: var(--storage-top); opacity: 0; }
     }
 
-    @keyframes travel-a {
-      0%, 8% { left: -38%; top: 50%; opacity: 0; }
-      15% { left: 8%; top: 50%; opacity: 1; }
-      62% { left: 96%; top: 50%; opacity: 1; }
-      76% { left: 132%; top: var(--storage-top); opacity: 1; }
-      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    @keyframes road-flow-final {
+      0% { left: -40%; top: 50%; opacity: 0; }
+      1.6% { left: -31%; top: 50%; opacity: 1; }
+      26.67% { left: 110%; top: 50%; opacity: 1; }
+      31.67% { left: 138%; top: var(--storage-top); opacity: 1; }
+      33.33% { left: 148%; top: var(--storage-top); opacity: 0; }
+      33.34%, 100% { left: 148%; top: var(--storage-top); opacity: 0; }
     }
 
-    @keyframes travel-b {
-      0%, 8% { left: -38%; top: 50%; opacity: 0; }
-      15% { left: 8%; top: 50%; opacity: 1; }
-      62% { left: 96%; top: 50%; opacity: 1; }
-      76% { left: 132%; top: var(--storage-top); opacity: 1; }
-      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    .road > .asset,
+    .road > .video {
+      animation: road-flow 10s linear infinite both;
     }
 
-    @keyframes travel-drm-a {
-      0%, 8% { left: -38%; top: 50%; opacity: 0; }
-      15% { left: 8%; top: 50%; opacity: 1; }
-      62% { left: 96%; top: 50%; opacity: 1; }
-      76% { left: 132%; top: var(--storage-top); opacity: 1; }
-      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    .road > .asset-subtitle { animation-delay: 0s; }
+    .road > .asset-metadata { animation-delay: -7.5s; }
+    .road > .asset-poster { animation-delay: -5s; }
+    .road > .video:not(.video-drm) { animation-delay: -2.5s; }
+
+    .final-flow .road > .asset,
+    .final-flow .road > .video {
+      animation-duration: 12.5s;
+      animation-name: road-flow-final;
     }
 
-    @keyframes travel-drm-b {
-      0%, 8% { left: -38%; top: 50%; opacity: 0; }
-      15% { left: 8%; top: 50%; opacity: 1; }
-      62% { left: 96%; top: 50%; opacity: 1; }
-      76% { left: 132%; top: var(--storage-top); opacity: 1; }
-      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    .final-flow .road > .asset-subtitle { animation-delay: 0s; }
+    .final-flow .road > .asset-metadata { animation-delay: -10s; }
+    .final-flow .road > .asset-poster { animation-delay: -7.5s; }
+    .final-flow .road > .video:not(.video-drm) { animation-delay: -5s; }
+    .final-flow .road > .video.video-drm { animation-delay: -2.5s; }
+
+    @keyframes playback-bucket-top {
+      0% { left: 0%; top: 20%; opacity: 0; }
+      2.5% { left: 7.5%; top: 20%; opacity: 1; }
+      30.83% { left: 92.5%; top: 50%; opacity: 1; }
+      33.33% { left: 100%; top: 50%; opacity: 0; }
+      33.34%, 100% { left: 100%; top: 50%; opacity: 0; }
     }
 
-    @keyframes feed-a {
-      0%, 8% { left: -38%; top: 50%; opacity: 0; }
-      15% { left: 8%; top: 50%; opacity: 1; }
-      62% { left: 96%; top: 50%; opacity: 1; }
-      76% { left: 132%; top: var(--storage-top); opacity: 1; }
-      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    @keyframes playback-bucket-bottom {
+      0% { left: 0%; top: 80%; opacity: 0; }
+      2.5% { left: 7.5%; top: 80%; opacity: 1; }
+      30.83% { left: 92.5%; top: 50%; opacity: 1; }
+      33.33% { left: 100%; top: 50%; opacity: 0; }
+      33.34%, 100% { left: 100%; top: 50%; opacity: 0; }
     }
 
-    @keyframes feed-b {
-      0%, 8% { left: -38%; top: 50%; opacity: 0; }
-      15% { left: 8%; top: 50%; opacity: 1; }
-      62% { left: 96%; top: 50%; opacity: 1; }
-      76% { left: 132%; top: var(--storage-top); opacity: 1; }
-      92%, 100% { left: 132%; top: var(--storage-top); opacity: 0; }
+    @keyframes playback-bucket-top-final {
+      0% { left: 0%; top: 20%; opacity: 0; }
+      2% { left: 8%; top: 20%; opacity: 1; }
+      23% { left: 92%; top: 50%; opacity: 1; }
+      25% { left: 100%; top: 50%; opacity: 0; }
+      25.01%, 100% { left: 100%; top: 50%; opacity: 0; }
     }
 
-    @keyframes kktv-video-label {
-      0%, 8% { opacity: 0; }
-      10%, 18% { opacity: 1; }
-      22%, 100% { opacity: 0; }
+    @keyframes playback-database-bottom {
+      0% { left: 0%; top: 80%; opacity: 0; }
+      8% { left: 8%; top: 80%; opacity: 1; }
+      92% { left: 92%; top: 50%; opacity: 1; }
+      100% { left: 100%; top: 50%; opacity: 0; }
     }
 
-    @keyframes kktv-drm-label {
-      0%, 16% { opacity: 0; }
-      20%, 100% { opacity: 1; }
+    @keyframes playback-database-top {
+      0% { left: 0%; top: 20%; opacity: 0; }
+      8% { left: 8%; top: 20%; opacity: 1; }
+      92% { left: 92%; top: 50%; opacity: 1; }
+      100% { left: 100%; top: 50%; opacity: 0; }
+    }
+
+    @keyframes cross-playback-flow {
+      0% { left: 0%; top: 100%; opacity: 0; }
+      3.33% { left: 10%; top: 90%; opacity: 1; }
+      30% { left: 90%; top: 10%; opacity: 1; }
+      33.33% { left: 100%; top: 0%; opacity: 0; }
+      33.34%, 100% { left: 100%; top: 0%; opacity: 0; }
+    }
+
+    .playback-route .playback-packet:not(.playback-packet-metadata) {
+      animation-duration: 9s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
+
+    .playback-route-a .playback-packet:not(.playback-packet-metadata) {
+      animation-name: playback-bucket-top;
+    }
+
+    .playback-route-b .playback-packet:not(.playback-packet-metadata) {
+      animation-name: playback-bucket-bottom;
+    }
+
+    .playback-route .playback-packet:nth-child(1) { animation-delay: 0s; }
+    .playback-route .playback-packet:nth-child(2) { animation-delay: -6s; }
+    .playback-route .playback-packet:nth-child(3) { animation-delay: -3s; }
+
+    .final-flow .playback-route-a .playback-packet:not(.playback-packet-metadata) {
+      animation-duration: 12s;
+      animation-name: playback-bucket-top-final;
+    }
+
+    .final-flow .playback-route-a .playback-packet:nth-child(1) { animation-delay: 0s; }
+    .final-flow .playback-route-a .playback-packet:nth-child(2) { animation-delay: -9s; }
+    .final-flow .playback-route-a .playback-packet:nth-child(3) { animation-delay: -6s; }
+    .final-flow .playback-route-a .playback-packet:nth-child(4) { animation-delay: -3s; }
+
+    .playback-route .playback-packet-metadata {
+      animation-duration: 2.4s !important;
+      animation-timing-function: linear !important;
+      animation-iteration-count: infinite !important;
+      animation-fill-mode: both !important;
+      animation-delay: 0s !important;
+    }
+
+    .playback-route-a .playback-packet-metadata {
+      animation-name: playback-database-bottom !important;
+    }
+
+    .playback-route-b .playback-packet-metadata {
+      animation-name: playback-database-top !important;
+    }
+
+    .cross-playback-route .cross-playback-packet {
+      animation: cross-playback-flow 7.5s linear infinite both;
+    }
+
+    .cross-playback-route .cross-playback-packet:nth-child(1) { animation-delay: 0s; }
+    .cross-playback-route .cross-playback-packet:nth-child(2) { animation-delay: -5s; }
+    .cross-playback-route .cross-playback-packet:nth-child(3) { animation-delay: -2.5s; }
+
+    .reveal .slides > section:not(.present) .asset,
+    .reveal .slides > section:not(.present) .video,
+    .reveal .slides > section:not(.present) .playback-packet,
+    .reveal .slides > section:not(.present) .cross-playback-packet,
+    .reveal .slides > section:not(.present) .metadata-transfer::after {
+      animation-play-state: paused;
     }
 
     @media (max-width: 900px) {
@@ -906,7 +980,7 @@
             <div class="road road-a">
               <div class="road-label"><strong>LineTV Pipeline</strong></div>
               <div class="asset asset-a asset-subtitle">Subtitle</div>
-              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-metadata">METADATA</div>
               <div class="asset asset-a asset-poster">Poster</div>
               <div class="video video-a"></div>
             </div>
@@ -917,8 +991,7 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -935,7 +1008,7 @@
             <div class="road road-b">
               <div class="road-label"><strong>KKTV Pipeline</strong></div>
               <div class="asset asset-b asset-subtitle">Subtitle</div>
-              <div class="asset asset-b asset-metadata">Drama metadata</div>
+              <div class="asset asset-b asset-metadata">METADATA</div>
               <div class="asset asset-b asset-poster">Poster</div>
               <div class="video video-b"></div>
             </div>
@@ -946,8 +1019,7 @@
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
-            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+            <div class="playback-route playback-route-b" aria-label="Bucket sends video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-video">DRM VIDEO</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -973,7 +1045,7 @@
             <div class="road road-a">
               <div class="road-label"><strong>LineTV Pipeline</strong></div>
               <div class="asset asset-a asset-subtitle">Subtitle</div>
-              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-metadata">METADATA</div>
               <div class="asset asset-a asset-poster">Poster</div>
               <div class="video video-a"></div>
             </div>
@@ -984,8 +1056,7 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -1002,7 +1073,7 @@
             <div class="road road-b">
               <div class="road-label"><strong>KKTV Pipeline</strong></div>
               <div class="asset asset-b asset-subtitle">Subtitle</div>
-              <div class="asset asset-b asset-metadata">Drama metadata</div>
+              <div class="asset asset-b asset-metadata">METADATA</div>
               <div class="asset asset-b asset-poster">Poster</div>
               <div class="video video-b"></div>
             </div>
@@ -1014,7 +1085,6 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
             <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
-              <div class="cross-playback-packet">Streaming file</div>
               <div class="cross-playback-packet">DRM VIDEO</div>
               <div class="cross-playback-packet">Poster</div>
               <div class="cross-playback-packet">Subtitle</div>
@@ -1041,7 +1111,7 @@
             <div class="road road-a">
               <div class="road-label"><strong>LineTV Pipeline</strong></div>
               <div class="asset asset-a asset-subtitle">Subtitle</div>
-              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-metadata">METADATA</div>
               <div class="asset asset-a asset-poster">Poster</div>
               <div class="video video-a"></div>
             </div>
@@ -1052,8 +1122,7 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -1070,7 +1139,7 @@
             <div class="road road-b">
               <div class="road-label"><strong>KKTV Pipeline</strong></div>
               <div class="asset asset-b asset-subtitle">Subtitle</div>
-              <div class="asset asset-b asset-metadata">Drama metadata</div>
+              <div class="asset asset-b asset-metadata">METADATA</div>
               <div class="asset asset-b asset-poster">Poster</div>
               <div class="video video-b"></div>
             </div>
@@ -1082,7 +1151,6 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
             <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
-              <div class="cross-playback-packet">Streaming file</div>
               <div class="cross-playback-packet">DRM VIDEO</div>
               <div class="cross-playback-packet">Poster</div>
               <div class="cross-playback-packet">Subtitle</div>
@@ -1109,7 +1177,7 @@
             <div class="road road-a">
               <div class="road-label"><strong>LineTV Pipeline</strong></div>
               <div class="asset asset-a asset-subtitle">Subtitle</div>
-              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-metadata">METADATA</div>
               <div class="asset asset-a asset-poster">Poster</div>
               <div class="video video-a"></div>
               <div class="video video-a video-drm video-drm-a"></div>
@@ -1121,8 +1189,7 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-video">DRM VIDEO</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
@@ -1140,7 +1207,7 @@
             <div class="road road-b">
               <div class="road-label"><strong>KKTV Pipeline</strong></div>
               <div class="asset asset-b asset-subtitle">Subtitle</div>
-              <div class="asset asset-b asset-metadata">Drama metadata</div>
+              <div class="asset asset-b asset-metadata">METADATA</div>
               <div class="asset asset-b asset-poster">Poster</div>
               <div class="video video-b video-original"></div>
               <div class="video video-b video-original video-drm video-drm-b"></div>
@@ -1153,7 +1220,6 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
             <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
-              <div class="cross-playback-packet">Streaming file</div>
               <div class="cross-playback-packet">DRM VIDEO</div>
               <div class="cross-playback-packet">Poster</div>
               <div class="cross-playback-packet">Subtitle</div>
@@ -1179,7 +1245,7 @@
             <div class="road road-a">
               <div class="road-label"><strong>LineTV Pipeline</strong></div>
               <div class="asset asset-a asset-subtitle">Subtitle</div>
-              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-metadata">METADATA</div>
               <div class="asset asset-a asset-poster">Poster</div>
               <div class="video video-a"></div>
               <div class="video video-a video-drm video-drm-a"></div>
@@ -1191,8 +1257,7 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-video">DRM VIDEO</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
@@ -1217,7 +1282,6 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
             <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
-              <div class="cross-playback-packet">Streaming file</div>
               <div class="cross-playback-packet">DRM VIDEO</div>
               <div class="cross-playback-packet">Poster</div>
               <div class="cross-playback-packet">Subtitle</div>
