@@ -487,6 +487,43 @@
       animation: metadata-transfer 2.4s linear infinite;
     }
 
+    .bad-mark {
+      position: absolute;
+      z-index: 6;
+      pointer-events: none;
+      color: #ff3b30;
+    }
+
+    .bad-mark::before,
+    .bad-mark::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 0.18em;
+      height: 100%;
+      border-radius: 0.1em;
+      background: currentColor;
+      box-shadow: 0 0 0.18em rgba(255, 59, 48, 0.75);
+    }
+
+    .bad-mark::before { transform: translate(-50%, -50%) rotate(45deg); }
+    .bad-mark::after { transform: translate(-50%, -50%) rotate(-45deg); }
+
+    .bad-mark-staff {
+      left: 0;
+      top: 7%;
+      width: 19%;
+      height: 70%;
+    }
+
+    .bad-mark-sync {
+      left: 61.5%;
+      top: 28%;
+      width: 5%;
+      height: 18%;
+    }
+
     @keyframes metadata-transfer {
       0% { top: 80%; opacity: 0; }
       12% { opacity: 1; }
@@ -802,6 +839,68 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
             <div class="metadata-transfer" aria-label="Metadata flows from the KKTV database to the LineTV database"></div>
+            <div class="player player-b" aria-label="Classic player presents the final media to the user">
+              <div class="player-screen"><div class="player-play"></div></div>
+              <span class="player-label">KKTV App</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <section class="updated-flow">
+        <div class="canvas">
+          <h1>Independent Pipelines, Synced Data</h1>
+
+          <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
+            <div class="bad-mark bad-mark-staff" aria-label="Bad: staff must operate both KKTV and LineTV computers"></div>
+            <div class="origin origin-a" aria-label="Staff member sends materials through the system">
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
+            </div>
+            <div class="road road-a">
+              <div class="road-label"><strong>LineTV Pipeline</strong> &nbsp; ingest → process → stream</div>
+              <div class="asset asset-a asset-subtitle">Subtitle</div>
+              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-poster">Poster</div>
+              <div class="video video-a"></div>
+            </div>
+            <div class="storage-bank storage-bank-a" aria-label="LineTV Pipeline storage: database and bucket">
+              <span class="storage-label"></span>
+              <div class="storage-input storage-input-database"></div>
+              <div class="storage-input storage-input-bucket"></div>
+              <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
+            </div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
+              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-poster">Poster</div>
+              <div class="playback-packet playback-packet-subtitle">Subtitle</div>
+              <div class="playback-packet playback-packet-metadata">Metadata</div>
+            </div>
+            <div class="player player-a" aria-label="Classic player presents the final media to the user">
+              <div class="player-screen"><div class="player-play"></div></div>
+              <span class="player-label">LineTV App</span>
+            </div>
+            <div class="origin origin-b" aria-label="Staff member sends materials through the system">
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
+            </div>
+            <div class="road road-b">
+              <div class="road-label"><strong>KKTV Pipeline</strong> &nbsp; ingest → process → stream</div>
+              <div class="asset asset-b asset-subtitle">Subtitle</div>
+              <div class="asset asset-b asset-metadata">Drama metadata</div>
+              <div class="asset asset-b asset-poster">Poster</div>
+              <div class="video video-b"></div>
+            </div>
+            <div class="storage-bank storage-bank-b" aria-label="KKTV Pipeline storage: database and bucket">
+              <span class="storage-label"></span>
+              <div class="storage-input storage-input-database"></div>
+              <div class="storage-input storage-input-bucket"></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
+              <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+            </div>
+            <div class="metadata-transfer" aria-label="Metadata flows from the KKTV database to the LineTV database"></div>
+            <div class="bad-mark bad-mark-sync" aria-label="Bad: metadata synchronization from the KKTV database to the LineTV database"></div>
             <div class="player player-b" aria-label="Classic player presents the final media to the user">
               <div class="player-screen"><div class="player-play"></div></div>
               <span class="player-label">KKTV App</span>
