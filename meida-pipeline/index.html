@@ -402,8 +402,8 @@
 
     .playback-route {
       position: absolute;
-      left: 74%;
-      width: 17%;
+      left: 72%;
+      width: 19%;
       height: 38%;
       box-sizing: border-box;
       overflow: hidden;
@@ -425,7 +425,7 @@
     .playback-packet {
       position: absolute;
       top: 50%;
-      left: -22%;
+      left: 0;
       width: calc(var(--material-width) / 0.4);
       height: calc(var(--material-height) / 0.4);
       box-sizing: border-box;
@@ -449,6 +449,15 @@
       color: #d08cff;
       animation: playback-drm 2.8s linear infinite;
     }
+
+    .final-flow .playback-route-a .playback-packet:nth-child(3),
+    .final-flow .playback-route-a .playback-packet:nth-child(5) {
+      animation-name: playback-staggered;
+      animation-duration: 8.4s;
+    }
+
+    .final-flow .playback-route-a .playback-packet:nth-child(3) { animation-delay: 0s; }
+    .final-flow .playback-route-a .playback-packet:nth-child(5) { animation-delay: 4.2s; }
 
     .final-flow .video-drm-a { color: #d08cff; }
 
@@ -611,21 +620,21 @@
     }
 
     @keyframes playback {
-      0% { left: -22%; opacity: 0; }
+      0% { left: 0; opacity: 0; }
       12% { opacity: 1; }
       88% { opacity: 1; }
       100% { left: 100%; opacity: 0; }
     }
 
     @keyframes playback-database {
-      0% { left: -22%; top: 20%; opacity: 0; }
+      0% { left: 0; top: 20%; opacity: 0; }
       12% { opacity: 1; }
       88% { left: 100%; top: 50%; opacity: 1; }
       100% { left: 100%; top: 50%; opacity: 0; }
     }
 
     @keyframes playback-bucket {
-      0% { left: -22%; top: 80%; opacity: 0; }
+      0% { left: 0; top: 80%; opacity: 0; }
       12% { opacity: 1; }
       88% { left: 100%; top: 50%; opacity: 1; }
       100% { left: 100%; top: 50%; opacity: 0; }
@@ -638,14 +647,14 @@
     .playback-route-a .playback-packet-video { animation-name: playback-bucket-top; }
 
     @keyframes playback-database-bottom {
-      0% { left: -22%; top: 80%; opacity: 0; }
+      0% { left: 0; top: 80%; opacity: 0; }
       12% { opacity: 1; }
       88% { left: 100%; top: 50%; opacity: 1; }
       100% { left: 100%; top: 50%; opacity: 0; }
     }
 
     @keyframes playback-bucket-top {
-      0% { left: -22%; top: 20%; opacity: 0; }
+      0% { left: 0; top: 20%; opacity: 0; }
       12% { opacity: 1; }
       88% { left: 100%; top: 50%; opacity: 1; }
       100% { left: 100%; top: 50%; opacity: 0; }
@@ -654,6 +663,14 @@
     @keyframes playback-drm {
       0% { left: 15%; top: 20%; opacity: 1; }
       100% { left: 100%; top: 50%; opacity: 1; }
+    }
+
+    @keyframes playback-staggered {
+      0% { left: 0; top: 20%; opacity: 0; }
+      8% { opacity: 1; }
+      42% { left: 92%; top: 50%; opacity: 1; }
+      50% { left: 100%; top: 50%; opacity: 0; }
+      100% { left: 100%; top: 50%; opacity: 0; }
     }
 
     .player-a { top: 6%; }
