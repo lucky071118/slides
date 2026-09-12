@@ -21,6 +21,7 @@
       --blue: #7bc7ff;
       --material-width: 3.7em;
       --material-height: 1.2em;
+      --material-radius: 0.22em;
       --label-size: 0.4em;
     }
 
@@ -135,7 +136,7 @@
       gap: 1.2em;
     }
 
-    .storage-bank-a { top: -3%; color: var(--coral); }
+    .storage-bank-a { top: -3%; color: var(--blue); }
     .storage-bank-b { top: 47%; color: var(--blue); }
 
     .storage-label {
@@ -173,12 +174,12 @@
 
     .storage-input-database {
       top: 25%;
-      color: var(--mint);
+      color: var(--blue);
     }
 
     .storage-input-bucket {
       top: 75%;
-      color: var(--coral);
+      color: var(--blue);
     }
 
     @keyframes storage-feed {
@@ -203,7 +204,7 @@
       border: 1px solid currentColor;
       border-radius: 0.12em;
       background: rgba(11, 25, 23, 0.94);
-      color: inherit;
+      color: var(--blue);
       font-size: var(--label-size);
       font-weight: 700;
       letter-spacing: 0.07em;
@@ -262,28 +263,36 @@
     .backend::before {
       content: "";
       position: absolute;
-      left: 50%;
-      top: 0.55em;
-      width: 2.2em;
-      height: 0.9em;
+      left: 0.72em;
+      top: 0.34em;
+      width: 3.25em;
+      height: 1.55em;
       border: 1px solid currentColor;
-      transform: translateX(-50%);
+      border-radius: 0.08em 0.08em 0 0;
+      transform: perspective(3em) rotateX(-12deg) rotateY(-8deg);
+      transform-origin: bottom center;
     }
 
     .backend::after {
       content: "";
       position: absolute;
-      left: 28%;
-      bottom: 0.35em;
-      width: 44%;
-      height: 0.16em;
-      background: currentColor;
-      box-shadow: 0 -0.28em 0 -0.04em currentColor;
+      left: 0.42em;
+      bottom: 0.34em;
+      width: 3.85em;
+      height: 0.7em;
+      border: 1px solid currentColor;
+      border-radius: 0.06em 0.06em 0.2em 0.2em;
+      transform: perspective(3em) rotateX(22deg) rotateY(-8deg);
+      transform-origin: top center;
+      background: repeating-linear-gradient(90deg, transparent 0 0.18em, currentColor 0.18em 0.2em);
+      background-size: 100% 35%;
+      background-position: center 35%;
+      background-repeat: no-repeat;
     }
 
     .staff {
       position: relative;
-      width: 4.8rem;
+      width: 5.5rem;
       height: 5.2rem;
       color: var(--gold);
       font-size: var(--label-size);
@@ -291,28 +300,77 @@
       text-transform: uppercase;
     }
 
-    .staff::before {
+    .staff-head {
       content: "";
       position: absolute;
-      left: 50%;
-      top: 0;
-      width: 1.6rem;
-      height: 1.6rem;
+      left: 1.45rem;
+      top: 0.05rem;
+      width: 1.42rem;
+      height: 1.55rem;
       border: 1px solid currentColor;
-      border-radius: 50%;
-      transform: translateX(-50%);
+      border-radius: 48% 52% 46% 54%;
+      transform: rotate(-8deg);
     }
 
-    .staff::after {
+    .staff-head::after {
       content: "";
       position: absolute;
-      left: 50%;
-      top: 1.9rem;
-      width: 2.8rem;
-      height: 2rem;
+      left: -0.08rem;
+      top: -0.06rem;
+      width: 1.42rem;
+      height: 0.55rem;
       border: 1px solid currentColor;
-      border-radius: 0.7em 0.7em 0 0;
-      transform: translateX(-50%);
+      border-bottom: 0;
+      border-radius: 0.8rem 0.8rem 0 0;
+      transform: rotate(-8deg);
+    }
+
+    .staff-body {
+      content: "";
+      position: absolute;
+      left: 0.85rem;
+      top: 1.68rem;
+      width: 2.8rem;
+      height: 2.35rem;
+      border: 1px solid currentColor;
+      border-radius: 1.15rem 1.15rem 0.28rem 0.28rem;
+      transform: skewX(-5deg);
+    }
+
+    .staff-body::after {
+      content: "";
+      position: absolute;
+      right: -0.28rem;
+      bottom: 0.2rem;
+      width: 1.3rem;
+      height: 0.42rem;
+      border-bottom: 1px solid currentColor;
+      border-radius: 50%;
+      transform: rotate(8deg);
+    }
+
+    .staff-arm {
+      position: absolute;
+      left: 3.1rem;
+      top: 2.05rem;
+      width: 2rem;
+      height: 0.48rem;
+      border: 1px solid currentColor;
+      border-left: 0;
+      border-radius: 0 0.5rem 0.5rem 0;
+      transform: rotate(13deg);
+      transform-origin: left center;
+    }
+
+    .staff-hand {
+      position: absolute;
+      left: 4.92rem;
+      top: 2.38rem;
+      width: 0.5rem;
+      height: 0.42rem;
+      border: 1px solid currentColor;
+      border-radius: 45% 55% 50% 50%;
+      transform: rotate(14deg);
     }
 
     .staff-label {
@@ -320,16 +378,6 @@
       left: 50%;
       bottom: -0.7em;
       transform: translateX(-50%);
-    }
-
-    .staff-arm {
-      position: absolute;
-      right: -0.8rem;
-      top: 2.1rem;
-      width: 1.7rem;
-      border-top: 2px solid currentColor;
-      transform: rotate(-18deg);
-      transform-origin: left center;
     }
 
     .player {
@@ -378,8 +426,8 @@
       position: absolute;
       top: 50%;
       left: -22%;
-      width: calc(var(--material-width) / 0.28);
-      height: calc(var(--material-height) / 0.28);
+      width: calc(var(--material-width) / 0.4);
+      height: calc(var(--material-height) / 0.4);
       box-sizing: border-box;
       border: 1px solid currentColor;
       border-radius: 0.22em;
@@ -388,7 +436,7 @@
       font-size: var(--label-size);
       font-weight: 700;
       letter-spacing: 0.06em;
-      line-height: calc(var(--material-height) / 0.28);
+      line-height: calc(var(--material-height) / 0.4);
       text-align: center;
       text-transform: uppercase;
       transform: translateY(-50%);
@@ -462,11 +510,16 @@
       z-index: 2;
       top: 50%;
       --storage-top: 100%;
-      width: var(--material-width);
-      height: var(--material-height);
+      width: calc(var(--material-width) / 0.4);
+      height: calc(var(--material-height) / 0.4);
+      box-sizing: border-box;
       border: 1px solid currentColor;
-      border-radius: 0.32em;
+      border-radius: var(--material-radius);
       background: #0b1917;
+      font-size: var(--label-size);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transform: translate(-50%, -50%);
       box-shadow: 0 0 18px currentColor;
     }
@@ -477,10 +530,7 @@
 
     .video::after {
       content: "VIDEO";
-      position: absolute;
-      right: 0.42em;
-      bottom: 0.27em;
-      font-size: var(--label-size);
+      font-size: 1em;
       letter-spacing: 0.08em;
       color: currentColor;
     }
@@ -490,17 +540,17 @@
       z-index: 1;
       top: 50%;
       --storage-top: 100%;
-      width: calc(var(--material-width) / 0.28);
-      height: calc(var(--material-height) / 0.28);
+      width: calc(var(--material-width) / 0.4);
+      height: calc(var(--material-height) / 0.4);
       box-sizing: border-box;
       border: 1px solid currentColor;
-      border-radius: 0.22em;
+      border-radius: var(--material-radius);
       background: rgba(11, 25, 23, 0.92);
       color: currentColor;
       font-size: var(--label-size);
       font-weight: 700;
       letter-spacing: 0.06em;
-      line-height: calc(var(--material-height) / 0.28);
+      line-height: calc(var(--material-height) / 0.4);
       text-align: center;
       text-transform: uppercase;
       transform: translate(-50%, -50%);
@@ -571,8 +621,8 @@
 
           <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
             <div class="origin origin-a" aria-label="Staff member sends materials through the system">
-              <div class="backend" aria-label="Admin system"></div>
-              <div class="staff"><span class="staff-label">Staff</span><span class="staff-arm"></span></div>
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
             </div>
             <div class="road road-a">
               <div class="road-label"><strong>LineTV Pipeline</strong> &nbsp; ingest → process → stream</div>
@@ -599,8 +649,8 @@
               <span class="player-label">LineTV App</span>
             </div>
             <div class="origin origin-b" aria-label="Staff member sends materials through the system">
-              <div class="backend" aria-label="Admin system"></div>
-              <div class="staff"><span class="staff-label">Staff</span><span class="staff-arm"></span></div>
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
             </div>
             <div class="road road-b">
               <div class="road-label"><strong>KKTV Pipeline</strong> &nbsp; ingest → process → stream</div>
