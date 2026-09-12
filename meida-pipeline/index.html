@@ -449,6 +449,7 @@
     .playback-packet-poster,
     .playback-packet-subtitle,
     .playback-packet-streaming { color: var(--coral); animation-name: playback-bucket; }
+    .playback-packet-video { color: var(--coral); animation-name: playback-bucket; }
 
     .playback-packet:nth-child(2) { animation-delay: 1.4s; }
 
@@ -492,36 +493,104 @@
       z-index: 6;
       pointer-events: none;
       color: #ff3b30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .bad-mark::before,
-    .bad-mark::after {
-      content: "";
+    .bad-mark-label {
       position: absolute;
       left: 50%;
-      top: 50%;
-      width: 0.18em;
-      height: 100%;
-      border-radius: 0.1em;
-      background: currentColor;
-      box-shadow: 0 0 0.18em rgba(255, 59, 48, 0.75);
+      bottom: -2.1em;
+      min-width: 5em;
+      padding: 0.35em 0.6em 0.3em;
+      border: 0.12em solid currentColor;
+      border-radius: 0.12em;
+      background: #5b1010;
+      color: currentColor;
+      font-size: 0.55em;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transform: translateX(-50%);
     }
 
-    .bad-mark::before { transform: translate(-50%, -50%) rotate(45deg); }
-    .bad-mark::after { transform: translate(-50%, -50%) rotate(-45deg); }
+    .bad-mark-label::before {
+      content: "BAD";
+      display: block;
+      margin-bottom: 0.18em;
+      font-size: 1.8em;
+      letter-spacing: 0.04em;
+    }
 
     .bad-mark-staff {
       left: 0;
-      top: 7%;
+      top: 33%;
       width: 19%;
-      height: 70%;
+      height: 18%;
+    }
+
+    .bad-mark-staff .bad-mark-label {
+      top: 50%;
+      bottom: auto;
+      transform: translate(-50%, -50%);
     }
 
     .bad-mark-sync {
-      left: 61.5%;
-      top: 28%;
-      width: 5%;
+      left: 71%;
+      top: 21%;
+      width: 8%;
       height: 18%;
+    }
+
+    .cross-playback-route {
+      position: absolute;
+      left: 76%;
+      top: 18%;
+      z-index: 4;
+      width: 14%;
+      height: 58%;
+      box-sizing: border-box;
+      color: var(--coral);
+    }
+
+    .cross-playback-route::before {
+      display: none;
+    }
+
+    .cross-playback-route::after {
+      display: none;
+    }
+
+    .cross-playback-packet {
+      position: absolute;
+      left: 0;
+      width: calc(var(--material-width) / 0.4);
+      height: calc(var(--material-height) / 0.4);
+      box-sizing: border-box;
+      border: 1px solid currentColor;
+      border-radius: var(--material-radius);
+      background: #0b1917;
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: calc(var(--material-height) / 0.4);
+      text-align: center;
+      text-transform: uppercase;
+      transform: translateY(-50%);
+      animation: cross-playback 4.2s linear infinite;
+    }
+
+    .cross-playback-packet:nth-child(3) { animation-delay: 1.4s; }
+    .cross-playback-packet:nth-child(4) { animation-delay: 2.8s; }
+
+    @keyframes cross-playback {
+      0% { left: 0; top: 100%; opacity: 0; }
+      12% { opacity: 1; }
+      88% { opacity: 1; }
+      100% { left: 100%; top: 0; opacity: 0; }
     }
 
     @keyframes metadata-transfer {
@@ -559,7 +628,8 @@
     .playback-route-a .playback-packet-metadata { animation-name: playback-database-bottom; }
     .playback-route-a .playback-packet-poster,
     .playback-route-a .playback-packet-subtitle,
-    .playback-route-a .playback-packet-streaming { animation-name: playback-bucket-top; }
+    .playback-route-a .playback-packet-streaming,
+    .playback-route-a .playback-packet-video { animation-name: playback-bucket-top; }
 
     @keyframes playback-database-bottom {
       0% { left: -22%; top: 80%; opacity: 0; }
@@ -672,8 +742,10 @@
 
     .road-a .asset-metadata { animation-delay: 0.45s; }
     .road-a .asset-poster { animation-delay: 0.9s; }
+    .road-a .asset-subtitle { animation-delay: 1.25s; }
     .road-b .asset-metadata { animation-delay: 1.55s; }
     .road-b .asset-poster { animation-delay: 2s; }
+    .road-b .asset-subtitle { animation-delay: 2.35s; }
 
     .video-a,
     .video-b { color: var(--coral); }
@@ -745,8 +817,9 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
               <div class="playback-packet playback-packet-metadata">Metadata</div>
@@ -773,8 +846,9 @@
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
-            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
+            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
               <div class="playback-packet playback-packet-metadata">Metadata</div>
@@ -810,8 +884,9 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
               <div class="playback-packet playback-packet-metadata">Metadata</div>
@@ -838,6 +913,12 @@
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
+            <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
+              <div class="cross-playback-packet">Streaming file</div>
+              <div class="cross-playback-packet">Video</div>
+              <div class="cross-playback-packet">Poster</div>
+              <div class="cross-playback-packet">Subtitle</div>
+            </div>
             <div class="metadata-transfer" aria-label="Metadata flows from the KKTV database to the LineTV database"></div>
             <div class="player player-b" aria-label="Classic player presents the final media to the user">
               <div class="player-screen"><div class="player-play"></div></div>
@@ -852,7 +933,7 @@
           <h1>Independent Pipelines, Synced Data</h1>
 
           <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
-            <div class="bad-mark bad-mark-staff" aria-label="Bad: staff must operate both KKTV and LineTV computers"></div>
+            <div class="bad-mark bad-mark-staff" aria-label="Bad: staff must operate both KKTV and LineTV computers"><span class="bad-mark-label"></span></div>
             <div class="origin origin-a" aria-label="Staff member sends materials through the system">
               <div class="backend" aria-label="Laptop computer"></div>
               <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
@@ -871,8 +952,9 @@
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-video">Video</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
               <div class="playback-packet playback-packet-metadata">Metadata</div>
@@ -899,8 +981,14 @@
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
+            <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
+              <div class="cross-playback-packet">Streaming file</div>
+              <div class="cross-playback-packet">Video</div>
+              <div class="cross-playback-packet">Poster</div>
+              <div class="cross-playback-packet">Subtitle</div>
+            </div>
             <div class="metadata-transfer" aria-label="Metadata flows from the KKTV database to the LineTV database"></div>
-            <div class="bad-mark bad-mark-sync" aria-label="Bad: metadata synchronization from the KKTV database to the LineTV database"></div>
+            <div class="bad-mark bad-mark-sync" aria-label="Bad: metadata synchronization from the KKTV database to the LineTV database"><span class="bad-mark-label"></span></div>
             <div class="player player-b" aria-label="Classic player presents the final media to the user">
               <div class="player-screen"><div class="player-play"></div></div>
               <span class="player-label">KKTV App</span>
