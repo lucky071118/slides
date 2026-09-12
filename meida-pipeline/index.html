@@ -971,7 +971,7 @@
       </section>
       <section class="updated-flow">
         <div class="canvas">
-          <h1>Independent Pipelines, Synced Data</h1>
+          <h1>Bad</h1>
 
           <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
             <div class="bad-mark bad-mark-staff" aria-label="Bad: staff must operate both KKTV and LineTV computers"><span class="bad-mark-label"></span></div>
@@ -1040,7 +1040,7 @@
       </section>
       <section class="updated-flow final-flow">
         <div class="canvas">
-          <h1>Independent Pipelines, Synced Data</h1>
+          <h1>Phase A</h1>
 
           <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
             <div class="origin origin-a" aria-label="Staff member sends materials through the system">
@@ -1100,6 +1100,69 @@
               <div class="cross-playback-packet">Subtitle</div>
             </div>
             <div class="metadata-transfer" aria-label="Metadata flows from the KKTV database to the LineTV database"></div>
+            <div class="player player-b" aria-label="Classic player presents the final media to the user">
+              <div class="player-screen"><div class="player-play"></div></div>
+              <span class="player-label">KKTV App</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+      <section class="updated-flow final-flow">
+        <div class="canvas">
+          <h1>Future</h1>
+
+          <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
+            <div class="origin origin-a" aria-label="Staff member sends materials through the system">
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
+            </div>
+            <div class="road road-a">
+              <div class="road-label"><strong>LineTV Pipeline</strong></div>
+              <div class="asset asset-a asset-subtitle">Subtitle</div>
+              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-poster">Poster</div>
+              <div class="video video-a"></div>
+              <div class="video video-a video-drm video-drm-a"></div>
+            </div>
+            <div class="storage-bank storage-bank-a" aria-label="LineTV Pipeline storage: database and bucket">
+              <span class="storage-label"></span>
+              <div class="storage-input storage-input-database"></div>
+              <div class="storage-input storage-input-bucket"></div>
+              <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
+            </div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, video, poster, and subtitle to the player">
+              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-video">Video</div>
+              <div class="playback-packet playback-packet-video">DRM VIDEO</div>
+              <div class="playback-packet playback-packet-poster">Poster</div>
+              <div class="playback-packet playback-packet-subtitle">Subtitle</div>
+              <div class="playback-packet playback-packet-metadata">Metadata</div>
+            </div>
+            <div class="player player-a" aria-label="Classic player presents the final media to the user">
+              <div class="player-screen"><div class="player-play"></div></div>
+              <span class="player-label">LineTV App</span>
+            </div>
+            <div class="origin origin-b" aria-label="KKTV computer">
+              <div class="backend" aria-label="Laptop computer"></div>
+            </div>
+            <div class="road road-b">
+              <div class="road-label"><strong>KKTV Pipeline</strong></div>
+            </div>
+            <div class="storage-bank storage-bank-b" aria-label="KKTV Pipeline storage: database and bucket">
+              <span class="storage-label"></span>
+              <div class="storage-input storage-input-database"></div>
+              <div class="storage-input storage-input-bucket"></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
+              <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+            </div>
+            <div class="cross-playback-route" aria-label="Materials flow from the KKTV bucket to the LineTV app">
+              <div class="cross-playback-packet">Streaming file</div>
+              <div class="cross-playback-packet">DRM VIDEO</div>
+              <div class="cross-playback-packet">Poster</div>
+              <div class="cross-playback-packet">Subtitle</div>
+            </div>
             <div class="player player-b" aria-label="Classic player presents the final media to the user">
               <div class="player-screen"><div class="player-play"></div></div>
               <span class="player-label">KKTV App</span>
