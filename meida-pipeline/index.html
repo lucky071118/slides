@@ -413,7 +413,7 @@
     .playback-route-b { top: 47%; color: var(--blue); }
 
     .playback-route::before {
-      content: "BUCKET ASSETS / DATABASE METADATA → PLAYER";
+      content: "BUCKET ASSETS";
       position: absolute;
       left: 0;
       top: -1.7em;
@@ -452,6 +452,52 @@
 
     .playback-packet:nth-child(2) { animation-delay: 1.4s; }
 
+    .metadata-transfer {
+      position: absolute;
+      left: 64%;
+      top: 25%;
+      z-index: 2;
+      width: 1px;
+      height: 24%;
+      color: var(--mint);
+    }
+
+    .metadata-transfer::before {
+      display: none;
+    }
+
+    .metadata-transfer::after {
+      content: "METADATA";
+      position: absolute;
+      left: 0;
+      top: 72%;
+      width: calc(var(--material-width) / 0.4);
+      height: calc(var(--material-height) / 0.4);
+      box-sizing: border-box;
+      padding: 0;
+      border: 1px solid currentColor;
+      border-radius: var(--material-radius);
+      background: #0b1917;
+      font-size: var(--label-size);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: calc(var(--material-height) / 0.4);
+      text-align: center;
+      transform: translate(-50%, -50%);
+      animation: metadata-transfer 2.4s linear infinite;
+    }
+
+    @keyframes metadata-transfer {
+      0% { top: 80%; opacity: 0; }
+      12% { opacity: 1; }
+      88% { opacity: 1; }
+      100% { top: 8%; opacity: 0; }
+    }
+
+    .updated-flow .playback-route-b {
+      display: none;
+    }
+
     @keyframes playback {
       0% { left: -22%; opacity: 0; }
       12% { opacity: 1; }
@@ -468,6 +514,25 @@
 
     @keyframes playback-bucket {
       0% { left: -22%; top: 80%; opacity: 0; }
+      12% { opacity: 1; }
+      88% { left: 100%; top: 50%; opacity: 1; }
+      100% { left: 100%; top: 50%; opacity: 0; }
+    }
+
+    .playback-route-a .playback-packet-metadata { animation-name: playback-database-bottom; }
+    .playback-route-a .playback-packet-poster,
+    .playback-route-a .playback-packet-subtitle,
+    .playback-route-a .playback-packet-streaming { animation-name: playback-bucket-top; }
+
+    @keyframes playback-database-bottom {
+      0% { left: -22%; top: 80%; opacity: 0; }
+      12% { opacity: 1; }
+      88% { left: 100%; top: 50%; opacity: 1; }
+      100% { left: 100%; top: 50%; opacity: 0; }
+    }
+
+    @keyframes playback-bucket-top {
+      0% { left: -22%; top: 20%; opacity: 0; }
       12% { opacity: 1; }
       88% { left: 100%; top: 50%; opacity: 1; }
       100% { left: 100%; top: 50%; opacity: 0; }
@@ -563,6 +628,11 @@
     .asset-poster { color: var(--coral); }
     .asset-metadata { --storage-top: 10%; }
 
+    .road-a .asset-subtitle,
+    .road-a .asset-poster,
+    .road-a .video { --storage-top: 10%; }
+    .road-a .asset-metadata { --storage-top: 75%; }
+
     .road-a .asset-metadata { animation-delay: 0.45s; }
     .road-a .asset-poster { animation-delay: 0.9s; }
     .road-b .asset-metadata { animation-delay: 1.55s; }
@@ -632,13 +702,13 @@
               <div class="video video-a"></div>
             </div>
             <div class="storage-bank storage-bank-a" aria-label="LineTV Pipeline storage: database and bucket">
-              <span class="storage-label">Storage units</span>
+              <span class="storage-label"></span>
               <div class="storage-input storage-input-database"></div>
               <div class="storage-input storage-input-bucket"></div>
-              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player; database sends metadata to the player">
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -660,13 +730,13 @@
               <div class="video video-b"></div>
             </div>
             <div class="storage-bank storage-bank-b" aria-label="KKTV Pipeline storage: database and bucket">
-              <span class="storage-label">Storage units</span>
+              <span class="storage-label"></span>
               <div class="storage-input storage-input-database"></div>
               <div class="storage-input storage-input-bucket"></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
-            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, poster, and subtitle to the player; database sends metadata to the player">
+            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -680,9 +750,9 @@
 
         </div>
       </section>
-      <section>
+      <section class="updated-flow">
         <div class="canvas">
-          <h1>Two Independent Pipelines</h1>
+          <h1>Independent Pipelines, Synced Data</h1>
 
           <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
             <div class="origin origin-a" aria-label="Staff member sends materials through the system">
@@ -697,13 +767,13 @@
               <div class="video video-a"></div>
             </div>
             <div class="storage-bank storage-bank-a" aria-label="LineTV Pipeline storage: database and bucket">
-              <span class="storage-label">Storage units</span>
+              <span class="storage-label"></span>
               <div class="storage-input storage-input-database"></div>
               <div class="storage-input storage-input-bucket"></div>
-              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
             </div>
-            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player; database sends metadata to the player">
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player">
               <div class="playback-packet playback-packet-streaming">Streaming file</div>
               <div class="playback-packet playback-packet-poster">Poster</div>
               <div class="playback-packet playback-packet-subtitle">Subtitle</div>
@@ -725,18 +795,13 @@
               <div class="video video-b"></div>
             </div>
             <div class="storage-bank storage-bank-b" aria-label="KKTV Pipeline storage: database and bucket">
-              <span class="storage-label">Storage units</span>
+              <span class="storage-label"></span>
               <div class="storage-input storage-input-database"></div>
               <div class="storage-input storage-input-bucket"></div>
               <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
               <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
             </div>
-            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, poster, and subtitle to the player; database sends metadata to the player">
-              <div class="playback-packet playback-packet-streaming">Streaming file</div>
-              <div class="playback-packet playback-packet-poster">Poster</div>
-              <div class="playback-packet playback-packet-subtitle">Subtitle</div>
-              <div class="playback-packet playback-packet-metadata">Metadata</div>
-            </div>
+            <div class="metadata-transfer" aria-label="Metadata flows from the KKTV database to the LineTV database"></div>
             <div class="player player-b" aria-label="Classic player presents the final media to the user">
               <div class="player-screen"><div class="player-play"></div></div>
               <span class="player-label">KKTV App</span>
@@ -751,8 +816,9 @@
   <script>
     Reveal.initialize({
       hash: true,
-      controls: false,
-      progress: false,
+      slideNumber: true,
+      controls: true,
+      progress: true,
       center: false,
       transition: "none",
       width: 1600,
