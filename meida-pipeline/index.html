@@ -680,6 +680,71 @@
 
         </div>
       </section>
+      <section>
+        <div class="canvas">
+          <h1>Two Independent Pipelines</h1>
+
+          <div class="diagram" aria-label="Two media paths through ingest, processing, storage, and streaming">
+            <div class="origin origin-a" aria-label="Staff member sends materials through the system">
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
+            </div>
+            <div class="road road-a">
+              <div class="road-label"><strong>LineTV Pipeline</strong> &nbsp; ingest → process → stream</div>
+              <div class="asset asset-a asset-subtitle">Subtitle</div>
+              <div class="asset asset-a asset-metadata">Drama metadata</div>
+              <div class="asset asset-a asset-poster">Poster</div>
+              <div class="video video-a"></div>
+            </div>
+            <div class="storage-bank storage-bank-a" aria-label="LineTV Pipeline storage: database and bucket">
+              <span class="storage-label">Storage units</span>
+              <div class="storage-input storage-input-database"></div>
+              <div class="storage-input storage-input-bucket"></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
+              <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+            </div>
+            <div class="playback-route playback-route-a" aria-label="Bucket sends streaming file, poster, and subtitle to the player; database sends metadata to the player">
+              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-poster">Poster</div>
+              <div class="playback-packet playback-packet-subtitle">Subtitle</div>
+              <div class="playback-packet playback-packet-metadata">Metadata</div>
+            </div>
+            <div class="player player-a" aria-label="Classic player presents the final media to the user">
+              <div class="player-screen"><div class="player-play"></div></div>
+              <span class="player-label">LineTV App</span>
+            </div>
+            <div class="origin origin-b" aria-label="Staff member sends materials through the system">
+              <div class="backend" aria-label="Laptop computer"></div>
+              <div class="staff"><span class="staff-head"></span><span class="staff-body"></span><span class="staff-arm"></span><span class="staff-hand"></span><span class="staff-label">Staff</span></div>
+            </div>
+            <div class="road road-b">
+              <div class="road-label"><strong>KKTV Pipeline</strong> &nbsp; ingest → process → stream</div>
+              <div class="asset asset-b asset-subtitle">Subtitle</div>
+              <div class="asset asset-b asset-metadata">Drama metadata</div>
+              <div class="asset asset-b asset-poster">Poster</div>
+              <div class="video video-b"></div>
+            </div>
+            <div class="storage-bank storage-bank-b" aria-label="KKTV Pipeline storage: database and bucket">
+              <span class="storage-label">Storage units</span>
+              <div class="storage-input storage-input-database"></div>
+              <div class="storage-input storage-input-bucket"></div>
+              <div class="store store-database"><span class="store-icon"></span><span>Database</span></div>
+              <div class="store store-bucket"><span class="store-icon"></span><span>Bucket</span></div>
+            </div>
+            <div class="playback-route playback-route-b" aria-label="Bucket sends streaming file, poster, and subtitle to the player; database sends metadata to the player">
+              <div class="playback-packet playback-packet-streaming">Streaming file</div>
+              <div class="playback-packet playback-packet-poster">Poster</div>
+              <div class="playback-packet playback-packet-subtitle">Subtitle</div>
+              <div class="playback-packet playback-packet-metadata">Metadata</div>
+            </div>
+            <div class="player player-b" aria-label="Classic player presents the final media to the user">
+              <div class="player-screen"><div class="player-play"></div></div>
+              <span class="player-label">KKTV App</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
